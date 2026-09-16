@@ -1,0 +1,1175 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2025.2 (win64) Build 6299465 Fri Nov 14 19:35:11 GMT 2025
+| Date         : Wed Sep 16 15:53:08 2026
+| Host         : DESKTOP-T1Q39G4 running 64-bit major release  (build 9200)
+| Command      : report_timing_summary -max_paths 10 -routable_nets -report_unconstrained -file top_timing_summary_routed.rpt -pb top_timing_summary_routed.pb -rpx top_timing_summary_routed.rpx -warn_on_violation
+| Design       : top
+| Device       : 7a35t-ftg256
+| Speed File   : -1  PRODUCTION 1.23 2018-06-13
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Summary Report
+
+------------------------------------------------------------------------------------------------
+| Timer Settings
+| --------------
+------------------------------------------------------------------------------------------------
+
+  Enable Multi Corner Analysis               :  Yes
+  Enable Pessimism Removal                   :  Yes
+  Pessimism Removal Resolution               :  Nearest Common Node
+  Enable Input Delay Default Clock           :  No
+  Enable Preset / Clear Arcs                 :  No
+  Disable Flight Delays                      :  No
+  Ignore I/O Paths                           :  No
+  Timing Early Launch at Borrowing Latches   :  No
+  Borrow Time for Max Delay Exceptions       :  Yes
+  Merge Timing Exceptions                    :  Yes
+  Inter-SLR Compensation                     :  Conservative
+
+  Corner  Analyze    Analyze    
+  Name    Max Paths  Min Paths  
+  ------  ---------  ---------  
+  Slow    Yes        Yes        
+  Fast    Yes        Yes        
+
+
+------------------------------------------------------------------------------------------------
+| Report Methodology
+| ------------------
+------------------------------------------------------------------------------------------------
+
+Rule       Severity  Description                    Violations  
+---------  --------  -----------------------------  ----------  
+TIMING-18  Warning   Missing input or output delay  49          
+
+Note: This report is based on the most recent report_methodology run and may not be up-to-date. Run report_methodology on the current design for the latest report.
+
+
+
+check_timing report
+
+Table of Contents
+-----------------
+1. checking no_clock (0)
+2. checking constant_clock (0)
+3. checking pulse_width_clock (0)
+4. checking unconstrained_internal_endpoints (0)
+5. checking no_input_delay (1)
+6. checking no_output_delay (26)
+7. checking multiple_clock (0)
+8. checking generated_clocks (0)
+9. checking loops (0)
+10. checking partial_input_delay (0)
+11. checking partial_output_delay (0)
+12. checking latch_loops (0)
+
+1. checking no_clock (0)
+------------------------
+ There are 0 register/latch pins with no clock.
+
+
+2. checking constant_clock (0)
+------------------------------
+ There are 0 register/latch pins with constant_clock.
+
+
+3. checking pulse_width_clock (0)
+---------------------------------
+ There are 0 register/latch pins which need pulse_width check
+
+
+4. checking unconstrained_internal_endpoints (0)
+------------------------------------------------
+ There are 0 pins that are not constrained for maximum delay.
+
+ There are 0 pins that are not constrained for maximum delay due to constant clock.
+
+
+5. checking no_input_delay (1)
+------------------------------
+ There is 1 input port with no input delay specified. (HIGH)
+
+ There are 0 input ports with no input delay but user has a false path constraint.
+
+
+6. checking no_output_delay (26)
+--------------------------------
+ There are 26 ports with no output delay specified. (HIGH)
+
+ There are 0 ports with no output delay but user has a false path constraint
+
+ There are 0 ports with no output delay but with a timing clock defined on it or propagating through it
+
+
+7. checking multiple_clock (0)
+------------------------------
+ There are 0 register/latch pins with multiple clocks.
+
+
+8. checking generated_clocks (0)
+--------------------------------
+ There are 0 generated clocks that are not connected to a clock source.
+
+
+9. checking loops (0)
+---------------------
+ There are 0 combinational loops in the design.
+
+
+10. checking partial_input_delay (0)
+------------------------------------
+ There are 0 input ports with partial input delay specified.
+
+
+11. checking partial_output_delay (0)
+-------------------------------------
+ There are 0 ports with partial output delay specified.
+
+
+12. checking latch_loops (0)
+----------------------------
+ There are 0 combinational latch loops in the design through latch input
+
+
+
+------------------------------------------------------------------------------------------------
+| Design Timing Summary
+| ---------------------
+------------------------------------------------------------------------------------------------
+
+    WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+    -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+        inf        0.000                      0                   29          inf        0.000                      0                   29        9.500        0.000                       0                     3  
+
+
+All user specified timing constraints are met.
+
+
+------------------------------------------------------------------------------------------------
+| Clock Summary
+| -------------
+------------------------------------------------------------------------------------------------
+
+Clock    Waveform(ns)       Period(ns)      Frequency(MHz)
+-----    ------------       ----------      --------------
+sys_clk  {0.000 10.000}     20.000          50.000          
+
+
+------------------------------------------------------------------------------------------------
+| Intra Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+Clock             WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
+-----             -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
+sys_clk                                                                                                                                                         9.500        0.000                       0                     3  
+
+
+------------------------------------------------------------------------------------------------
+| Inter Clock Table
+| -----------------
+------------------------------------------------------------------------------------------------
+
+From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| Other Path Groups Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock          WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints  
+----------    ----------    --------          -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------  
+
+
+------------------------------------------------------------------------------------------------
+| User Ignored Path Table
+| -----------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+
+
+------------------------------------------------------------------------------------------------
+| Unconstrained Path Table
+| ------------------------
+------------------------------------------------------------------------------------------------
+
+Path Group    From Clock    To Clock    
+----------    ----------    --------    
+(none)        sys_clk                     
+(none)                      sys_clk       
+
+
+------------------------------------------------------------------------------------------------
+| Timing Details
+| --------------
+------------------------------------------------------------------------------------------------
+
+
+---------------------------------------------------------------------------------------------------
+From Clock:  sys_clk
+  To Clock:  sys_clk
+
+Setup :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+Hold  :           NA  Failing Endpoints,  Worst Slack           NA  ,  Total Violation           NA
+PW    :            0  Failing Endpoints,  Worst Slack        9.500ns,  Total Violation        0.000ns
+---------------------------------------------------------------------------------------------------
+
+
+Pulse Width Checks
+--------------------------------------------------------------------------------------
+Clock Name:         sys_clk
+Waveform(ns):       { 0.000 10.000 }
+Period(ns):         20.000
+Sources:            { clk }
+
+Check Type        Corner  Lib Pin  Reference Pin  Required(ns)  Actual(ns)  Slack(ns)  Location       Pin
+Min Period        n/a     BUFG/I   n/a            2.155         20.000      17.845     BUFGCTRL_X0Y0  clk_IBUF_BUFG_inst/I
+Min Period        n/a     FDRE/C   n/a            1.000         20.000      19.000     SLICE_X0Y91    dds1/sine_out_reg[11]/C
+Min Period        n/a     FDRE/C   n/a            1.000         20.000      19.000     SLICE_X0Y85    dds1/sine_out_reg[11]_lopt_replica/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         10.000      9.500      SLICE_X0Y91    dds1/sine_out_reg[11]/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         10.000      9.500      SLICE_X0Y91    dds1/sine_out_reg[11]/C
+Low Pulse Width   Slow    FDRE/C   n/a            0.500         10.000      9.500      SLICE_X0Y85    dds1/sine_out_reg[11]_lopt_replica/C
+Low Pulse Width   Fast    FDRE/C   n/a            0.500         10.000      9.500      SLICE_X0Y85    dds1/sine_out_reg[11]_lopt_replica/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         10.000      9.500      SLICE_X0Y91    dds1/sine_out_reg[11]/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         10.000      9.500      SLICE_X0Y91    dds1/sine_out_reg[11]/C
+High Pulse Width  Slow    FDRE/C   n/a            0.500         10.000      9.500      SLICE_X0Y85    dds1/sine_out_reg[11]_lopt_replica/C
+High Pulse Width  Fast    FDRE/C   n/a            0.500         10.000      9.500      SLICE_X0Y85    dds1/sine_out_reg[11]_lopt_replica/C
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  sys_clk
+  To Clock:  
+
+Max Delay            26 Endpoints
+Min Delay            26 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[0]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.560ns  (logic 4.912ns (64.965%)  route 2.649ns (35.035%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         1.519     1.519 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.972     3.490    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.586 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           1.644     5.230    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[0])
+                                                      2.291     7.521 r  product__0/P[0]
+                         net (fo=1, routed)           2.649    10.170    product_OBUF[0]
+    G11                  OBUF (Prop_obuf_I_O)         2.621    12.790 r  product_OBUF[0]_inst/O
+                         net (fo=0)                   0.000    12.790    product[0]
+    G11                                                               r  product[0] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[22]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.489ns  (logic 4.951ns (66.108%)  route 2.538ns (33.892%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         1.519     1.519 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.972     3.490    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.586 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           1.644     5.230    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[22])
+                                                      2.291     7.521 r  product__0/P[22]
+                         net (fo=1, routed)           2.538    10.059    product_OBUF[22]
+    E11                  OBUF (Prop_obuf_I_O)         2.660    12.719 r  product_OBUF[22]_inst/O
+                         net (fo=0)                   0.000    12.719    product[22]
+    E11                                                               r  product[22] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[23]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.483ns  (logic 4.936ns (65.965%)  route 2.547ns (34.035%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         1.519     1.519 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.972     3.490    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.586 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           1.644     5.230    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[23])
+                                                      2.291     7.521 r  product__0/P[23]
+                         net (fo=1, routed)           2.547    10.068    product_OBUF[23]
+    E13                  OBUF (Prop_obuf_I_O)         2.645    12.713 r  product_OBUF[23]_inst/O
+                         net (fo=0)                   0.000    12.713    product[23]
+    E13                                                               r  product[23] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[21]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.458ns  (logic 4.948ns (66.339%)  route 2.511ns (33.661%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         1.519     1.519 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.972     3.490    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.586 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           1.644     5.230    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[21])
+                                                      2.291     7.521 r  product__0/P[21]
+                         net (fo=1, routed)           2.511    10.031    product_OBUF[21]
+    D11                  OBUF (Prop_obuf_I_O)         2.657    12.688 r  product_OBUF[21]_inst/O
+                         net (fo=0)                   0.000    12.688    product[21]
+    D11                                                               r  product[21] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[20]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.444ns  (logic 4.934ns (66.290%)  route 2.509ns (33.710%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         1.519     1.519 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.972     3.490    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.586 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           1.644     5.230    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[20])
+                                                      2.291     7.521 r  product__0/P[20]
+                         net (fo=1, routed)           2.509    10.030    product_OBUF[20]
+    D14                  OBUF (Prop_obuf_I_O)         2.643    12.674 r  product_OBUF[20]_inst/O
+                         net (fo=0)                   0.000    12.674    product[20]
+    D14                                                               r  product[20] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[1]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.297ns  (logic 4.929ns (67.553%)  route 2.368ns (32.447%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         1.519     1.519 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.972     3.490    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.586 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           1.644     5.230    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[1])
+                                                      2.291     7.521 r  product__0/P[1]
+                         net (fo=1, routed)           2.368     9.889    product_OBUF[1]
+    G15                  OBUF (Prop_obuf_I_O)         2.638    12.527 r  product_OBUF[1]_inst/O
+                         net (fo=0)                   0.000    12.527    product[1]
+    G15                                                               r  product[1] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[3]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.295ns  (logic 4.922ns (67.463%)  route 2.374ns (32.537%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         1.519     1.519 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.972     3.490    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.586 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           1.644     5.230    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[3])
+                                                      2.291     7.521 r  product__0/P[3]
+                         net (fo=1, routed)           2.374     9.895    product_OBUF[3]
+    J16                  OBUF (Prop_obuf_I_O)         2.631    12.525 r  product_OBUF[3]_inst/O
+                         net (fo=0)                   0.000    12.525    product[3]
+    J16                                                               r  product[3] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[2]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.288ns  (logic 4.924ns (67.557%)  route 2.364ns (32.443%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         1.519     1.519 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.972     3.490    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.586 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           1.644     5.230    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[2])
+                                                      2.291     7.521 r  product__0/P[2]
+                         net (fo=1, routed)           2.364     9.885    product_OBUF[2]
+    H14                  OBUF (Prop_obuf_I_O)         2.633    12.518 r  product_OBUF[2]_inst/O
+                         net (fo=0)                   0.000    12.518    product[2]
+    H14                                                               r  product[2] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[5]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.287ns  (logic 4.925ns (67.586%)  route 2.362ns (32.414%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         1.519     1.519 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.972     3.490    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.586 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           1.644     5.230    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[5])
+                                                      2.291     7.521 r  product__0/P[5]
+                         net (fo=1, routed)           2.362     9.883    product_OBUF[5]
+    G16                  OBUF (Prop_obuf_I_O)         2.634    12.517 r  product_OBUF[5]_inst/O
+                         net (fo=0)                   0.000    12.517    product[5]
+    G16                                                               r  product[5] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[4]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        7.280ns  (logic 4.914ns (67.495%)  route 2.366ns (32.505%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         1.519     1.519 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.972     3.490    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.096     3.586 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           1.644     5.230    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[4])
+                                                      2.291     7.521 r  product__0/P[4]
+                         net (fo=1, routed)           2.366     9.887    product_OBUF[4]
+    J15                  OBUF (Prop_obuf_I_O)         2.623    12.510 r  product_OBUF[4]_inst/O
+                         net (fo=0)                   0.000    12.510    product[4]
+    J15                                                               r  product[4] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 dds1/sine_out_reg[11]_lopt_replica/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            sine1[11]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        1.604ns  (logic 1.318ns (82.166%)  route 0.286ns (17.834%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         0.286     0.286 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.634     0.920    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.946 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           0.589     1.535    dds1/clk_IBUF_BUFG
+    SLICE_X0Y85          FDRE                                         r  dds1/sine_out_reg[11]_lopt_replica/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y85          FDRE (Prop_fdre_C_Q)         0.141     1.676 r  dds1/sine_out_reg[11]_lopt_replica/Q
+                         net (fo=1, routed)           0.286     1.962    lopt
+    A14                  OBUF (Prop_obuf_I_O)         1.177     3.139 r  sine1_OBUF[11]_inst/O
+                         net (fo=0)                   0.000     3.139    sine1[11]
+    A14                                                               r  sine1[11] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 dds1/sine_out_reg[11]/C
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            sine2[11]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        1.725ns  (logic 1.309ns (75.885%)  route 0.416ns (24.115%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         0.286     0.286 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.634     0.920    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.946 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           0.592     1.538    dds1/clk_IBUF_BUFG
+    SLICE_X0Y91          FDRE                                         r  dds1/sine_out_reg[11]/C
+  -------------------------------------------------------------------    -------------------
+    SLICE_X0Y91          FDRE (Prop_fdre_C_Q)         0.141     1.679 r  dds1/sine_out_reg[11]/Q
+                         net (fo=1, routed)           0.416     2.095    sine2_OBUF[11]
+    C9                   OBUF (Prop_obuf_I_O)         1.168     3.263 r  sine2_OBUF[11]_inst/O
+                         net (fo=0)                   0.000     3.263    sine2[11]
+    C9                                                                r  sine2[11] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[11]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.222ns  (logic 1.631ns (73.408%)  route 0.591ns (26.592%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         0.286     0.286 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.634     0.920    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.946 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           0.651     1.598    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[11])
+                                                      0.478     2.076 r  product__0/P[11]
+                         net (fo=1, routed)           0.591     2.666    product_OBUF[11]
+    G12                  OBUF (Prop_obuf_I_O)         1.153     3.819 r  product_OBUF[11]_inst/O
+                         net (fo=0)                   0.000     3.819    product[11]
+    G12                                                               r  product[11] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[12]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.224ns  (logic 1.634ns (73.468%)  route 0.590ns (26.532%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         0.286     0.286 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.634     0.920    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.946 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           0.651     1.598    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[12])
+                                                      0.478     2.076 r  product__0/P[12]
+                         net (fo=1, routed)           0.590     2.666    product_OBUF[12]
+    H11                  OBUF (Prop_obuf_I_O)         1.156     3.822 r  product_OBUF[12]_inst/O
+                         net (fo=0)                   0.000     3.822    product[12]
+    H11                                                               r  product[12] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[9]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.232ns  (logic 1.610ns (72.166%)  route 0.621ns (27.834%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         0.286     0.286 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.634     0.920    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.946 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           0.651     1.598    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[9])
+                                                      0.478     2.076 r  product__0/P[9]
+                         net (fo=1, routed)           0.621     2.697    product_OBUF[9]
+    H13                  OBUF (Prop_obuf_I_O)         1.132     3.829 r  product_OBUF[9]_inst/O
+                         net (fo=0)                   0.000     3.829    product[9]
+    H13                                                               r  product[9] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[14]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.234ns  (logic 1.644ns (73.589%)  route 0.590ns (26.411%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         0.286     0.286 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.634     0.920    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.946 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           0.651     1.598    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[14])
+                                                      0.478     2.076 r  product__0/P[14]
+                         net (fo=1, routed)           0.590     2.666    product_OBUF[14]
+    F15                  OBUF (Prop_obuf_I_O)         1.166     3.832 r  product_OBUF[14]_inst/O
+                         net (fo=0)                   0.000     3.832    product[14]
+    F15                                                               r  product[14] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[8]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.239ns  (logic 1.615ns (72.160%)  route 0.623ns (27.840%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         0.286     0.286 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.634     0.920    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.946 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           0.651     1.598    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[8])
+                                                      0.478     2.076 r  product__0/P[8]
+                         net (fo=1, routed)           0.623     2.699    product_OBUF[8]
+    G14                  OBUF (Prop_obuf_I_O)         1.137     3.836 r  product_OBUF[8]_inst/O
+                         net (fo=0)                   0.000     3.836    product[8]
+    G14                                                               r  product[8] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[7]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.240ns  (logic 1.616ns (72.136%)  route 0.624ns (27.864%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         0.286     0.286 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.634     0.920    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.946 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           0.651     1.598    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[7])
+                                                      0.478     2.076 r  product__0/P[7]
+                         net (fo=1, routed)           0.624     2.700    product_OBUF[7]
+    F14                  OBUF (Prop_obuf_I_O)         1.138     3.838 r  product_OBUF[7]_inst/O
+                         net (fo=0)                   0.000     3.838    product[7]
+    F14                                                               r  product[7] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[10]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.244ns  (logic 1.619ns (72.132%)  route 0.625ns (27.868%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         0.286     0.286 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.634     0.920    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.946 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           0.651     1.598    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[10])
+                                                      0.478     2.076 r  product__0/P[10]
+                         net (fo=1, routed)           0.625     2.701    product_OBUF[10]
+    H12                  OBUF (Prop_obuf_I_O)         1.141     3.842 r  product_OBUF[10]_inst/O
+                         net (fo=0)                   0.000     3.842    product[10]
+    H12                                                               r  product[10] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 product__0/CLK
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Destination:            product[16]
+                            (output port)
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        2.246ns  (logic 1.645ns (73.230%)  route 0.601ns (26.770%))
+  Logic Levels:           1  (OBUF=1)
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         0.286     0.286 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.634     0.920    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026     0.946 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           0.651     1.598    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+  -------------------------------------------------------------------    -------------------
+    DSP48_X0Y24          DSP48E1 (Prop_dsp48e1_CLK_P[16])
+                                                      0.478     2.076 r  product__0/P[16]
+                         net (fo=1, routed)           0.601     2.677    product_OBUF[16]
+    E16                  OBUF (Prop_obuf_I_O)         1.167     3.844 r  product_OBUF[16]_inst/O
+                         net (fo=0)                   0.000     3.844    product[16]
+    E16                                                               r  product[16] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+
+
+
+
+--------------------------------------------------------------------------------------
+Path Group:  (none)
+From Clock:  
+  To Clock:  sys_clk
+
+Max Delay             3 Endpoints
+Min Delay             3 Endpoints
+--------------------------------------------------------------------------------------
+
+
+Max Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 rst
+                            (input port)
+  Destination:            dds1/sine_out_reg[11]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             (none)
+  Path Type:              Setup (Max at Slow Process Corner)
+  Data Path Delay:        4.343ns  (logic 1.458ns (33.572%)  route 2.885ns (66.428%))
+  Logic Levels:           1  (IBUF=1)
+  Clock Path Skew:        4.915ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.915ns
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    K13                                               0.000     0.000 r  rst (IN)
+                         net (fo=0)                   0.000     0.000    rst
+    K13                  IBUF (Prop_ibuf_I_O)         1.458     1.458 r  rst_IBUF_inst/O
+                         net (fo=5, routed)           2.885     4.343    dds1/rst_IBUF
+    SLICE_X0Y91          FDRE                                         r  dds1/sine_out_reg[11]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         1.448     1.448 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.868     3.316    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091     3.407 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           1.508     4.915    dds1/clk_IBUF_BUFG
+    SLICE_X0Y91          FDRE                                         r  dds1/sine_out_reg[11]/C
+
+Slack:                    inf
+  Source:                 rst
+                            (input port)
+  Destination:            dds1/sine_out_reg[11]_lopt_replica/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             (none)
+  Path Type:              Setup (Max at Slow Process Corner)
+  Data Path Delay:        4.150ns  (logic 1.458ns (35.137%)  route 2.692ns (64.863%))
+  Logic Levels:           1  (IBUF=1)
+  Clock Path Skew:        4.911ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.911ns
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    K13                                               0.000     0.000 r  rst (IN)
+                         net (fo=0)                   0.000     0.000    rst
+    K13                  IBUF (Prop_ibuf_I_O)         1.458     1.458 r  rst_IBUF_inst/O
+                         net (fo=5, routed)           2.692     4.150    dds1/rst_IBUF
+    SLICE_X0Y85          FDRE                                         r  dds1/sine_out_reg[11]_lopt_replica/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         1.448     1.448 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.868     3.316    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091     3.407 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           1.504     4.911    dds1/clk_IBUF_BUFG
+    SLICE_X0Y85          FDRE                                         r  dds1/sine_out_reg[11]_lopt_replica/C
+
+Slack:                    inf
+  Source:                 rst
+                            (input port)
+  Destination:            product__0/RSTM
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             (none)
+  Path Type:              Setup (Max at Slow Process Corner)
+  Data Path Delay:        3.686ns  (logic 1.458ns (39.564%)  route 2.227ns (60.436%))
+  Logic Levels:           1  (IBUF=1)
+  Clock Path Skew:        4.934ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    4.934ns
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    0.000ns
+  Clock Uncertainty:      0.025ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter     (TSJ):    0.050ns
+    Total Input Jitter      (TIJ):    0.000ns
+    Discrete Jitter          (DJ):    0.000ns
+    Phase Error              (PE):    0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    K13                                               0.000     0.000 r  rst (IN)
+                         net (fo=0)                   0.000     0.000    rst
+    K13                  IBUF (Prop_ibuf_I_O)         1.458     1.458 r  rst_IBUF_inst/O
+                         net (fo=5, routed)           2.227     3.686    rst_IBUF
+    DSP48_X0Y24          DSP48E1                                      r  product__0/RSTM
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         1.448     1.448 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           1.868     3.316    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.091     3.407 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           1.527     4.934    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+
+
+
+
+
+Min Delay Paths
+--------------------------------------------------------------------------------------
+Slack:                    inf
+  Source:                 rst
+                            (input port)
+  Destination:            product__0/RSTM
+                            (rising edge-triggered cell DSP48E1 clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             (none)
+  Path Type:              Hold (Min at Fast Process Corner)
+  Data Path Delay:        1.258ns  (logic 0.226ns (17.989%)  route 1.031ns (82.011%))
+  Logic Levels:           1  (IBUF=1)
+  Clock Path Skew:        2.113ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.113ns
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    K13                                               0.000     0.000 r  rst (IN)
+                         net (fo=0)                   0.000     0.000    rst
+    K13                  IBUF (Prop_ibuf_I_O)         0.226     0.226 r  rst_IBUF_inst/O
+                         net (fo=5, routed)           1.031     1.258    rst_IBUF
+    DSP48_X0Y24          DSP48E1                                      r  product__0/RSTM
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         0.475     0.475 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.689     1.163    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.192 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           0.921     2.113    clk_IBUF_BUFG
+    DSP48_X0Y24          DSP48E1                                      r  product__0/CLK
+
+Slack:                    inf
+  Source:                 rst
+                            (input port)
+  Destination:            dds1/sine_out_reg[11]_lopt_replica/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             (none)
+  Path Type:              Hold (Min at Fast Process Corner)
+  Data Path Delay:        1.359ns  (logic 0.226ns (16.647%)  route 1.133ns (83.353%))
+  Logic Levels:           1  (IBUF=1)
+  Clock Path Skew:        2.051ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.051ns
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    K13                                               0.000     0.000 r  rst (IN)
+                         net (fo=0)                   0.000     0.000    rst
+    K13                  IBUF (Prop_ibuf_I_O)         0.226     0.226 r  rst_IBUF_inst/O
+                         net (fo=5, routed)           1.133     1.359    dds1/rst_IBUF
+    SLICE_X0Y85          FDRE                                         r  dds1/sine_out_reg[11]_lopt_replica/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         0.475     0.475 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.689     1.163    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.192 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           0.858     2.051    dds1/clk_IBUF_BUFG
+    SLICE_X0Y85          FDRE                                         r  dds1/sine_out_reg[11]_lopt_replica/C
+
+Slack:                    inf
+  Source:                 rst
+                            (input port)
+  Destination:            dds1/sine_out_reg[11]/R
+                            (rising edge-triggered cell FDRE clocked by sys_clk  {rise@0.000ns fall@10.000ns period=20.000ns})
+  Path Group:             (none)
+  Path Type:              Hold (Min at Fast Process Corner)
+  Data Path Delay:        1.440ns  (logic 0.226ns (15.717%)  route 1.213ns (84.283%))
+  Logic Levels:           1  (IBUF=1)
+  Clock Path Skew:        2.055ns (DCD - SCD - CPR)
+    Destination Clock Delay (DCD):    2.055ns
+    Source Clock Delay      (SCD):    0.000ns
+    Clock Pessimism Removal (CPR):    -0.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+    K13                                               0.000     0.000 r  rst (IN)
+                         net (fo=0)                   0.000     0.000    rst
+    K13                  IBUF (Prop_ibuf_I_O)         0.226     0.226 r  rst_IBUF_inst/O
+                         net (fo=5, routed)           1.213     1.440    dds1/rst_IBUF
+    SLICE_X0Y91          FDRE                                         r  dds1/sine_out_reg[11]/R
+  -------------------------------------------------------------------    -------------------
+
+                         (clock sys_clk rise edge)    0.000     0.000 r  
+    N11                                               0.000     0.000 r  clk (IN)
+                         net (fo=0)                   0.000     0.000    clk
+    N11                  IBUF (Prop_ibuf_I_O)         0.475     0.475 r  clk_IBUF_inst/O
+                         net (fo=1, routed)           0.689     1.163    clk_IBUF
+    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.029     1.192 r  clk_IBUF_BUFG_inst/O
+                         net (fo=3, routed)           0.862     2.055    dds1/clk_IBUF_BUFG
+    SLICE_X0Y91          FDRE                                         r  dds1/sine_out_reg[11]/C
+
+
+
+
+

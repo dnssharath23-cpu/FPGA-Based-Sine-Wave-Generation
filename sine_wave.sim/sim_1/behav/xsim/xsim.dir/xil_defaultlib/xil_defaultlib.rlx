@@ -1,0 +1,9 @@
+0.7
+2020.2
+Nov 14 2025
+19:37:27
+D:/RTL_PROJECTS/sine_wave/sine_wave.sim/sim_1/behav/xsim/glbl.v,1756381829,verilog,,,,glbl,,,,,,,,
+D:/RTL_PROJECTS/sine_wave/sine_wave.srcs/sim_1/new/sine_dds_tb.v,1789552340,verilog,,,,sine_dds_tb,,,../../../../../../xilinx_vivado/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/RTL_PROJECTS/sine_wave/sine_wave.srcs/sim_1/new/top_tb.v,1789409326,verilog,,,,top_tb,,,../../../../../../xilinx_vivado/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/RTL_PROJECTS/sine_wave/sine_wave.srcs/sources_1/new/sine_dds.v,1789552795,verilog,,D:/RTL_PROJECTS/sine_wave/sine_wave.srcs/sources_1/new/top.v,,sine_dds,,,../../../../../../xilinx_vivado/2025.2/Vivado/data/rsb/busdef,,,,,
+D:/RTL_PROJECTS/sine_wave/sine_wave.srcs/sources_1/new/top.v,1789553788,verilog,,D:/RTL_PROJECTS/sine_wave/sine_wave.srcs/sim_1/new/top_tb.v,,top,,,../../../../../../xilinx_vivado/2025.2/Vivado/data/rsb/busdef,,,,,
