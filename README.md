@@ -1,6 +1,6 @@
 # FPGA-Based Sine Wave Generation and Digital Frequency Mixing
 
-## 📌 Project Overview
+##  Project Overview
 
 This project implements a **Digital Direct Digital Synthesis (DDS)** based sine-wave generation system on an **AMD/Xilinx Artix-7 FPGA**.
 
@@ -14,7 +14,7 @@ The design is developed and verified using **AMD/Xilinx Vivado**, with behaviora
 
 ---
 
-# 🎯 Project Objectives
+#  Project Objectives
 
 The main objectives of this project are:
 
@@ -33,7 +33,7 @@ The main objectives of this project are:
 
 ---
 
-# 🧩 System Architecture
+#  System Architecture
 
 The overall system consists of two independent DDS generators followed by a digital multiplier.
 
@@ -86,7 +86,7 @@ Both DDS blocks use the same 100 MHz FPGA system clock but have different Freque
 
 ---
 
-# 🔬 Direct Digital Synthesis (DDS)
+#  Direct Digital Synthesis (DDS)
 
 ## What is DDS?
 
@@ -128,7 +128,7 @@ Frequency Control Word
 
 ---
 
-# 📐 DDS Frequency Equation
+# DDS Frequency Equation
 
 The output frequency of a DDS is determined by:
 
@@ -151,28 +151,8 @@ FCW =
 \frac{f_{out}2^N}{f_{clk}}
 \]
 
-In this project:
 
-\[
-N=32
-\]
-
-and
-
-\[
-f_{clk}=100\,MHz
-\]
-
-Therefore:
-
-\[
-FCW =
-\frac{f_{out}\times2^{32}}{100\times10^6}
-\]
-
----
-
-# ⚙️ DDS Configuration
+#  DDS Configuration
 
 The current DDS implementation uses the following configuration:
 
@@ -191,15 +171,7 @@ The phase accumulator wraps around automatically when it reaches its maximum val
 
 ---
 
-# 🔢 Phase Accumulator
-
-The phase accumulator performs:
-
-```verilog
-phase_acc <= phase_acc + fcw;
-```
-
-on every rising edge of the FPGA clock.
+#  Phase Accumulator
 
 Conceptually:
 
@@ -225,23 +197,9 @@ Conceptually:
           Sine ROM
 ```
 
-Since the LUT contains 1024 entries:
-
-\[
-1024=2^{10}
-\]
-
-the upper 10 bits of the 32-bit phase accumulator are used as the LUT address:
-
-```verilog
-sine_rom[phase_acc[31:22]]
-```
-
-This allows one complete sine-wave cycle to be represented using 1024 amplitude samples.
-
 ---
 
-# 🌊 Sine Lookup Table
+#  Sine Lookup Table
 
 A sine lookup table is used instead of calculating the sine function directly in hardware.
 
@@ -260,47 +218,14 @@ The LUT is stored in a memory initialization file:
 sine_lut.mem
 ```
 
-The DDS module loads this file using:
 
-```verilog
-$readmemh("sine_lut.mem", sine_rom);
-```
-
-The LUT is generated using Python.
-
----
-
-# 🐍 LUT Generation Using Python
+# LUT Generation Using Python
 
 The sine lookup table is generated offline using Python.
 
 The Python script calculates the sine value for each of the 1024 phase positions and converts the result into a 12-bit unsigned value.
 
 The basic generation process is:
-
-```python
-import math
-
-LUT_SIZE = 1024
-DAC_BITS = 12
-
-MAX_VALUE = (2 ** DAC_BITS) - 1
-MID_VALUE = MAX_VALUE / 2
-AMPLITUDE = MAX_VALUE / 2
-
-with open("sine_lut.mem", "w") as file:
-    for i in range(LUT_SIZE):
-
-        angle = 2.0 * math.pi * i / LUT_SIZE
-
-        value = MID_VALUE + AMPLITUDE * math.sin(angle)
-
-        value = int(round(value))
-
-        value = max(0, min(MAX_VALUE, value))
-
-        file.write(f"{value:03X}\n")
-```
 
 Python is used only to generate the LUT file.
 
@@ -310,40 +235,7 @@ Vivado/XSim reads the generated `.mem` file during simulation, and the synthesiz
 
 ---
 
-# 🔢 Offset-Binary Representation
-
-The generated DDS sine wave uses a 12-bit unsigned representation.
-
-Therefore the output range is:
-
-```text
-0       → negative peak
-2048    → approximately zero
-4095    → positive peak
-```
-
-Conceptually:
-
-```text
-       +2047
-          │
-          │       /\
-          │      /  \
-       2048 ────/────\────  Zero level
-          │   /        \
-          │  /          \
-          │ /
-          │
-          0
-```
-
-This representation is useful when interfacing with an unsigned DAC.
-
-However, it is not directly suitable for mathematical signed multiplication because the sine wave is not centered around zero in its digital representation.
-
----
-
-# ➖ Conversion to Signed Sine Samples
+#  Conversion to Signed Sine Samples
 
 To perform a mathematically correct multiplication, the DC offset of 2048 is removed.
 
@@ -353,44 +245,14 @@ The conversion is:
 x_{signed}=x_{unsigned}-2048
 \]
 
-Therefore:
-
-```text
-Unsigned DDS output:
-
-0 ... 2048 ... 4095
-
-        │
-        │ subtract 2048
-        ▼
-
-Signed output:
-
--2048 ... 0 ... +2047
-```
-
-The conversion is implemented as:
-
-```verilog
-assign sine1 = $signed({1'b0, sine1_raw}) - 13'sd2048;
-assign sine2 = $signed({1'b0, sine2_raw}) - 13'sd2048;
-```
-
 The extra bit is used because the signed representation must accommodate both positive and negative values.
 
 ---
 
-# 🎛️ Two Independent DDS Generators
+#  Two Independent DDS Generators
 
 The same reusable DDS module is instantiated twice.
 
-```text
-DDS 1
-FCW1 → 1 MHz sine wave
-
-DDS 2
-FCW2 → 3 MHz sine wave
-```
 
 This demonstrates that the DDS module can be reused for multiple frequencies.
 
@@ -427,47 +289,7 @@ FCW_2 \approx 128,849,019
 
 ---
 
-# 💻 Reusable DDS Module
-
-The DDS module accepts the Frequency Control Word as an input.
-
-```verilog
-module sine_dds (
-    input  wire        clk,
-    input  wire        rst,
-    input  wire [31:0] fcw,
-    output reg  [11:0] sine_out
-);
-
-    reg [31:0] phase_acc;
-    reg [11:0] sine_rom [0:1023];
-
-    initial begin
-        $readmemh("sine_lut.mem", sine_rom);
-    end
-
-    always @(posedge clk) begin
-        if (rst)
-            phase_acc <= 32'd0;
-        else
-            phase_acc <= phase_acc + fcw;
-    end
-
-    always @(posedge clk) begin
-        if (rst)
-            sine_out <= 12'd2048;
-        else
-            sine_out <= sine_rom[phase_acc[31:22]];
-    end
-
-endmodule
-```
-
-The module is reusable because the frequency is controlled through the `fcw` input instead of being hard-coded inside the module.
-
----
-
-# ✖️ Digital Multiplication
+#  Digital Multiplication
 
 After generating the two sine waves, they are multiplied.
 
@@ -489,71 +311,12 @@ The output is:
 y[n]=x_1[n]x_2[n]
 \]
 
-The Verilog implementation is:
-
-```verilog
-assign product = sine1 * sine2;
-```
-
-Because each sine sample is represented using 13 signed bits:
-
-```text
-13-bit × 13-bit = 26-bit
-```
-
-Therefore the product is declared as:
-
-```verilog
-wire signed [25:0] product;
-```
 
 Using 26 bits prevents loss of the multiplication result.
 
 ---
 
-# 🎚️ Why Signed Multiplication is Required
-
-If the original unsigned DDS values were multiplied directly:
-
-```verilog
-assign product = sine1_raw * sine2_raw;
-```
-
-the result would contain a large DC offset because both signals are centered around 2048 rather than zero.
-
-Mathematically:
-
-\[
-x_1=2048+A\sin(\omega_1t)
-\]
-
-\[
-x_2=2048+A\sin(\omega_2t)
-\]
-
-Direct multiplication therefore produces additional DC and frequency terms.
-
-For the intended frequency-mixer operation, the signals must first be centered:
-
-\[
-x_1=A\sin(\omega_1t)
-\]
-
-\[
-x_2=A\sin(\omega_2t)
-\]
-
-and then:
-
-\[
-y=x_1x_2
-\]
-
-This is why the 2048 offset is removed before multiplication.
-
----
-
-# 📡 Frequency Mixing Theory
+#  Frequency Mixing Theory
 
 The multiplication of two sinusoidal signals produces sum and difference frequency components.
 
@@ -610,7 +373,7 @@ f_{sum}=f_1+f_2
 
 ---
 
-# 📊 Current Frequency Configuration
+# Current Frequency Configuration
 
 The project currently uses:
 
@@ -650,7 +413,7 @@ This is the main frequency-mixing result being demonstrated by the project.
 
 ---
 
-# 🌊 Expected Time-Domain Waveforms
+#  Expected Time-Domain Waveforms
 
 The individual DDS outputs are sinusoidal.
 
@@ -699,74 +462,8 @@ This behavior is expected from the mathematical identity:
 
 ---
 
-# 🧪 MATLAB Reference Verification
 
-Before implementing the multiplication in FPGA hardware, the mathematical behavior can be verified using MATLAB.
-
-For example:
-
-```matlab
-Fs = 10000;
-
-t = 0:1/Fs:0.01;
-
-f1 = 100;
-f2 = 700;
-
-x1 = sin(2*pi*f1*t);
-x2 = sin(2*pi*f2*t);
-
-y = x1 .* x2;
-
-figure;
-plot(t,x1);
-grid on;
-xlabel('Time (s)');
-ylabel('Amplitude');
-title('Sine Wave 1 - 100 Hz');
-
-figure;
-plot(t,x2);
-grid on;
-xlabel('Time (s)');
-ylabel('Amplitude');
-title('Sine Wave 2 - 700 Hz');
-
-figure;
-plot(t,y);
-grid on;
-xlabel('Time (s)');
-ylabel('Amplitude');
-title('Multiplication of 100 Hz and 700 Hz Sine Waves');
-```
-
-For this example:
-
-\[
-f_1=100Hz
-\]
-
-\[
-f_2=700Hz
-\]
-
-the resulting product contains:
-
-\[
-700-100=600Hz
-\]
-
-and:
-
-\[
-700+100=800Hz
-\]
-
-The MATLAB waveform is used as a mathematical reference for the FPGA implementation.
-
----
-
-# 🖥️ Vivado Behavioral Simulation
+#  Vivado Behavioral Simulation
 
 The design is first verified through behavioral simulation in Vivado.
 
@@ -794,7 +491,7 @@ The simulation confirms that the DDS blocks generate signals at different freque
 
 # ⏱️ FPGA Clock and Frequency Relationship
 
-The Arty A7-35T provides a 100 MHz system clock for the design.
+The Artix A7-35T provides a 100 MHz system clock for the design.
 
 Therefore:
 
@@ -823,11 +520,11 @@ This relationship can be observed in the Vivado simulation waveform.
 
 ---
 
-# 🖥️ Hardware Platform
+#  Hardware Platform
 
 The project targets the:
 
-**Digilent Arty A7-35T FPGA development board**
+**Edge Artix A7-35T FPGA development board**
 
 with the:
 
@@ -837,53 +534,7 @@ The board provides a 100 MHz clock source that is used as the DDS system clock.
 
 ---
 
-# 🔌 Hardware Constraints
-
-The current design only requires external FPGA pin assignments for the system clock and reset.
-
-The internal signals:
-
-```text
-sine1
-sine2
-product
-```
-
-do not need physical FPGA pins when they are being observed using ILA.
-
-The clock is assigned to the Arty A7 clock pin:
-
-```text
-E3
-```
-
-The reset input is connected to:
-
-```text
-BTN0 / D9
-```
-
-Example XDC:
-
-```tcl
-## 100 MHz Clock
-
-set_property -dict { PACKAGE_PIN E3 IOSTANDARD LVCMOS33 } [get_ports clk]
-
-create_clock -add -name sys_clk_pin \
-    -period 10.00 \
-    -waveform {0 5} \
-    [get_ports clk]
-
-
-## Reset / BTN0
-
-set_property -dict { PACKAGE_PIN D9 IOSTANDARD LVCMOS33 } [get_ports rst]
-```
-
----
-
-# 🔍 Hardware Verification Using ILA
+#  Hardware Verification Using ILA
 
 After simulation, the design can be implemented on the Artix-7 FPGA.
 
@@ -937,89 +588,8 @@ ILA allows the digital waveforms to be observed directly inside the FPGA.
 
 ---
 
-# ❓ Why an External DAC is Not Required for ILA
 
-The Arty A7-35T contains an onboard XADC for analog-to-digital conversion, but it does not provide an onboard general-purpose DAC for converting these generated digital signals into analog voltages.
-
-However, a DAC is **not required for the current FPGA verification stage**.
-
-ILA directly monitors the digital signals inside the FPGA.
-
-Therefore:
-
-```text
-DDS → Multiplier → ILA
-```
-
-is sufficient for digital hardware verification.
-
-An external DAC would only be required if the objective is to produce an actual analog voltage waveform that can be observed using an oscilloscope or spectrum analyzer.
-
----
-
-# 🎛️ Future External DAC Implementation
-
-A future version of the project can include an external DAC.
-
-The architecture would become:
-
-```text
-DDS 1 ─────► sine1 ──────┐
-                         │
-DDS 2 ─────► sine2 ──────┼──► Digital Processing
-                         │
-                         ▼
-                      product
-                         │
-                         ▼
-                    DAC Interface
-                         │
-                         ▼
-                  External DAC
-                         │
-                         ▼
-              Analog Reconstruction
-                         │
-                         ▼
-              Oscilloscope / Analyzer
-```
-
-If the product is sent to a 12-bit DAC, the signed 26-bit product must first be appropriately scaled and converted into the DAC's input range.
-
-The product should **not** simply be truncated to the lowest 12 bits because that can introduce severe distortion and incorrect amplitude representation.
-
----
-
-# 🧮 Product Data Width
-
-The DDS output is 12-bit unsigned.
-
-After centering:
-
-```text
-sine1 = 13-bit signed
-sine2 = 13-bit signed
-```
-
-The multiplication therefore requires:
-
-\[
-13\times13=26
-\]
-
-bits.
-
-Hence:
-
-```verilog
-output wire signed [25:0] product;
-```
-
-The product is signed because multiplication of two signed sine-wave samples produces both positive and negative values.
-
----
-
-# 📁 Project Structure
+#  Project Structure
 
 The repository is organized to separate RTL, simulation, constraints, LUT data, and reference MATLAB/Python files.
 
@@ -1052,7 +622,7 @@ The exact directory organization may change as the project develops.
 
 ---
 
-# 🧱 Main RTL Modules
+#  Main RTL Modules
 
 ## `sine_dds.v`
 
@@ -1102,55 +672,7 @@ product
 
 ---
 
-# 📋 Current `top.v` Architecture
-
-The current top-level architecture is:
-
-```verilog
-module top (
-    input  wire clk,
-    input  wire rst,
-
-    output wire signed [12:0] sine1,
-    output wire signed [12:0] sine2,
-    output wire signed [25:0] product
-);
-
-    localparam [31:0] FCW1 = 32'd42949673;
-    localparam [31:0] FCW2 = 32'd128849019;
-
-    wire [11:0] sine1_raw;
-    wire [11:0] sine2_raw;
-
-    sine_dds dds1 (
-        .clk      (clk),
-        .rst      (rst),
-        .fcw      (FCW1),
-        .sine_out (sine1_raw)
-    );
-
-    sine_dds dds2 (
-        .clk      (clk),
-        .rst      (rst),
-        .fcw      (FCW2),
-        .sine_out (sine2_raw)
-    );
-
-    assign sine1 =
-        $signed({1'b0, sine1_raw}) - 13'sd2048;
-
-    assign sine2 =
-        $signed({1'b0, sine2_raw}) - 13'sd2048;
-
-    assign product =
-        sine1 * sine2;
-
-endmodule
-```
-
----
-
-# 🔄 Complete Data Flow
+#  Complete Data Flow
 
 The complete digital processing chain is:
 
@@ -1192,7 +714,7 @@ The complete digital processing chain is:
 
 ---
 
-# 📈 Expected Frequency-Domain Result
+#  Expected Frequency-Domain Result
 
 For:
 
@@ -1219,7 +741,7 @@ The exact amplitudes depend on the digital amplitude scaling, LUT quantization, 
 
 ---
 
-# ⚠️ Important Implementation Considerations
+#  Important Implementation Considerations
 
 ## 1. Product is not a single sine wave
 
@@ -1290,27 +812,11 @@ DAC → Analog waveform generation
 
 ---
 
-# 🧪 Verification Strategy
+# Verification Strategy
 
 The project follows a staged verification process.
 
-### Stage 1 — MATLAB Verification
-
-Verify the mathematical multiplication of two sine waves.
-
-```text
-Sine 1
-   +
-Sine 2
-   ↓
-Multiplication
-   ↓
-Sum + Difference frequencies
-```
-
----
-
-### Stage 2 — Vivado Behavioral Simulation
+### Stage 1 — Vivado Behavioral Simulation
 
 Verify:
 
@@ -1322,7 +828,7 @@ Verify:
 
 ---
 
-### Stage 3 — RTL Synthesis
+### Stage 2 — RTL Synthesis
 
 Verify that the RTL can be synthesized for the Artix-7 FPGA.
 
@@ -1330,7 +836,7 @@ Resource utilization and inferred hardware can be examined after synthesis.
 
 ---
 
-### Stage 4 — Implementation
+### Stage 3 — Implementation
 
 Perform:
 
@@ -1342,13 +848,13 @@ for the Artix-7 XC7A35T device.
 
 ---
 
-### Stage 5 — Hardware Programming
+### Stage 4 — Hardware Programming
 
 Generate the bitstream and program the Arty A7-35T.
 
 ---
 
-### Stage 6 — ILA Hardware Verification
+### Stage 5 — ILA Hardware Verification
 
 Use ILA to observe:
 
@@ -1362,13 +868,7 @@ and compare the hardware behavior against simulation.
 
 ---
 
-### Stage 7 — External DAC
-
-As a future extension, connect an external DAC to produce analog output.
-
----
-
-# 📊 Project Status
+#  Project Status
 
 ## Completed
 
@@ -1387,28 +887,13 @@ As a future extension, connect an external DAC to produce analog output.
 - [x] Vivado behavioral simulation
 - [x] Artix-7 XC7A35T target selected
 - [x] Arty A7-35T clock/reset constraints prepared
-
-## In Progress
-
-- [ ] ILA integration
-- [ ] Synthesis
-- [ ] Implementation
-- [ ] Bitstream generation
-- [ ] Programming Arty A7-35T
-- [ ] Hardware ILA capture
-- [ ] Hardware versus simulation comparison
-
-## Future Work
-
-- [ ] Frequency-spectrum analysis
-- [ ] External DAC interface
-- [ ] Analog waveform observation
-- [ ] Oscilloscope verification
-- [ ] Spectrum analyzer verification
-- [ ] Programmable frequency input
-- [ ] Amplitude control
-- [ ] Digital filtering
-- [ ] Resource and timing optimization
+- [x] ILA integration
+- [x] Synthesis
+- [x] Implementation
+- [x] Bitstream generation
+- [x] Programming Arty A7-35T
+- [x] Hardware ILA capture
+- [x] Hardware versus simulation comparison
 
 ---
 
@@ -1436,7 +921,7 @@ This would allow the frequency of each DDS to be changed without modifying the R
 
 ---
 
-# 📚 Key Concepts Demonstrated
+#  Key Concepts Demonstrated
 
 This project combines several important digital design and DSP concepts:
 
@@ -1459,7 +944,7 @@ This project combines several important digital design and DSP concepts:
 
 ---
 
-# 🧠 Technical Summary
+# Technical Summary
 
 The project generates two digital sine waves using independent DDS blocks.
 
@@ -1526,7 +1011,7 @@ The digital signals can be verified inside the Artix-7 FPGA using the Vivado Int
 
 ---
 
-# 🏁 Final Project Flow
+#  Final Project Flow
 
 ```text
                      MATLAB
